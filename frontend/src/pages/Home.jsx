@@ -7,11 +7,11 @@ function Home() {
     const [searchQuery, setSearchQuery] = useState("");
     const [movies, setMovies] = useState([]);
 
+
     async function getMovies() {
     try {
         const response = await api.get('/movies');
 
-        console.log("RETORNO DA API:", response.data);
         
         setMovies(response.data);
     } catch (error) {

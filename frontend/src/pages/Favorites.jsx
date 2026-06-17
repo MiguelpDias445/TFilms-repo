@@ -12,7 +12,7 @@ function Favorites() {
     async function getMovies() {
         try {
             const response = await api.get('/favorites');
-
+            console.log("FAVORITOS:", response.data);
             setMovies(response.data);
 
         } catch(error) {
@@ -92,7 +92,7 @@ function Favorites() {
                                     className="favorite-btn"
                                     onClick={() => removeFavorite(movie.id)}
                                 >
-                                    ❌
+                                    X
                                 </button>
 
                             </div>
