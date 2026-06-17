@@ -8,14 +8,16 @@ function Home() {
     const [movies, setMovies] = useState([]);
 
     async function getMovies() {
-        try {
-            const response = await api.get('/movies');
+    try {
+        const response = await api.get('/movies');
 
-            setMovies(response.data);
-        } catch (error) {
-            console.error(error);
-        }
+        console.log("RETORNO DA API:", response.data);
+        
+        setMovies(response.data);
+    } catch (error) {
+        console.error(error);
     }
+}
 
     useEffect(() => {
         getMovies();

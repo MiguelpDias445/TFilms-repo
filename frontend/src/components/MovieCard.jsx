@@ -10,26 +10,30 @@ function MovieCard({ movie }) {
     }
 
     async function onFavoriteClick() {
-        try {
-            await api.post('/favorites', {
-                movieId: movie.id,
-                title: movie.title,
-                poster: movie.poster
-            });
+    try {
+        await api.post('/favorites', {
+            movieId: movie.id,
+            title: movie.title,
+            poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+        });
 
-            alert('Filme adicionado aos favoritos!');
-        } catch (error) {
-            console.error(error);
-            alert('Erro ao adicionar favorito');
-        }
+        alert('Filme adicionado aos favoritos!');
+
+    } catch(error) {
+        if(error.response?.status === 400){
+        alert("Esse filme já está nos favoritos")
+    } else {
+        alert("Erro ao adicionar favorito")
     }
-
+}
+    }
     return (
         <div className="movie-card">
             <div className="movie-poster">
-                <img src={movie.poster} alt={movie.title} />
-
-                <div className="movie-overlay">
+<img
+    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+    alt={movie.title}
+/>                <div className="movie-overlay">
                     <button
                         className="favorite-btn"
                         onClick={onFavoriteClick}
