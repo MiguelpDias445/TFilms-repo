@@ -43,7 +43,7 @@ function Home() {
                 </button>
             </form>
 
-            <div className="movie-grid">
+            <div className="movies-grid">
                 {movies
                     .filter(movie =>
                         movie.title

@@ -8,13 +8,17 @@
 }
 
 .navbar-brand {
+  color: #e50914;
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-.navbar-links {
-  display: flex;
-  gap: 2rem;
+.nav-link {
+  color: white;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
 .nav-link {
@@ -25,9 +29,9 @@
 }
 
 .nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  color: #e50914;
+  background-color: rgba(229, 9, 20, 0.1);
 }
-
 @media (max-width: 768px) {
   .navbar {
     padding: 1rem;
@@ -35,13 +39,16 @@
 
   .navbar-brand {
     font-size: 1.2rem;
+    color:#e50914;
   }
 
   .navbar-links {
     gap: 1rem;
+    color:#e50914;
   }
 
   .nav-link {
     padding: 0.5rem;
+    color:#e50914;
   }
 }

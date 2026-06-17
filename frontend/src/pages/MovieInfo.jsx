@@ -1,51 +1,55 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../../services/api";
+import "../css/MovieInfo.css";
 
-
-function MovieInfo(){
-
+function MovieInfo() {
     const { id } = useParams();
 
     const [movie, setMovie] = useState(null);
 
-
-    async function getMovie(){
-
+    async function getMovie() {
         const response = await api.get(`/movie/${id}`);
-
         setMovie(response.data);
-
     }
 
-
-    useEffect(()=>{
+    useEffect(() => {
         getMovie();
-    },[]);
+    }, []);
 
-
-    if(!movie){
-        return <h2>Loading...</h2>
+    if (!movie) {
+        return (
+            <div className="loading">
+                <h2>Carregando filme...</h2>
+            </div>
+        );
     }
-
 
     return (
-        <div>
+        <div className="movie-details">
 
-            <h1>{movie.title}</h1>
+            <div className="movie-poster-container">
+                <img
+                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                    alt={movie.title}
+                />
+            </div>
 
-            <img 
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            />
+            <div className="movie-content">
+                <h1>{movie.title}</h1>
 
-            <p>{movie.overview}</p>
+                <div className="movie-meta">
+                    <span>📅 {movie.release_date}</span>
+                    <span>⭐ {movie.vote_average?.toFixed(1)}</span>
+                </div>
 
-            <p>
-                Lançamento: {movie.release_date}
-            </p>
+                <h3>Sinopse</h3>
+
+                <p>{movie.overview}</p>
+            </div>
 
         </div>
-    )
+    );
 }
 
 export default MovieInfo;
