@@ -1,10 +1,17 @@
-import "../css/MovieInfo.css"
+import { useParams } from 'react-router-dom';
+import "../css/MovieInfo.css";
 
 function MovieInfo() {
-    return <div className="movie-info-empty">
-        <h2>Movie not found</h2>
-        <p>Sorry, we couldn't find the movie you're looking for. Please check the URL and try again.</p>
+  const { id } = useParams();
+  const { title } = useParams();
+
+  return (
+    <div>
+      <h1>Movie Details</h1>
+      <p>Movie Name: { title }</p>
+      <p>Movie ID: {id}</p>
     </div>
+  );
 }
 
 export default MovieInfo;
